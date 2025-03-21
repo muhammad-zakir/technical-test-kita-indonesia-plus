@@ -1,0 +1,47 @@
+services:
+  application:
+    container_name: application
+    build: .
+    depends_on:
+      - database
+      - message-broker
+    ports:
+      - 8000:8000
+    environment:
+      APPLICATION_DEBUG: ${APPLICATION_DEBUG}
+      APPLICATION_SECRET_KEY: ${APPLICATION_SECRET_KEY}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      MESSAGE_BROKER_URL: ${MESSAGE_BROKER_URL}
+    networks:
+      - technical-test-library
+
+  database:
+    container_name: database
+    image: postgres:17-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 8u@Hj4m8u
+    networks:
+      - technical-test-library
+
+  message-broker:
+    container_name: message-broker
+    image: rabbitmq:4-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: "jambu"
+      RABBITMQ_DEFAULT_PASS: "buah"
+      RABBITMQ_DEFAULT_VHOST: "library"
+      RABBITMQ_ERLANG_COOKIE: "8u@hj4m8U"
+    networks:
+      - technical-test-library
+
+networks:
+  technical-test-library: {}
