@@ -1,0 +1,35 @@
+{% extends 'rest_framework/base.html' %}
+
+{% load i18n %}
+
+{% block title %}{% translate 'Technical Test - We+' %}{% endblock %}
+
+{% block branding %}
+<li class="tooltip tooltip-right tooltip-primary" data-tip="{% translate 'Django REST framework' %}">
+  <a href="https://www.django-rest-framework.org/" class="btn btn-square btn-primary lg:btn-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+    </svg>
+    <span class="sr-only">{% translate 'Django REST framework' %}</span>
+  </a>
+</li>
+{% endblock %}
+
+{% block userlinks %}
+<li class="tooltip tooltip-right" data-tip="{% translate 'GitHub' %}">
+  <a href="https://github.com/muhammad-zakir" class="btn btn-square btn-ghost">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+    </svg>
+    <span class="sr-only">{% translate 'GitHub' %}</span>
+  </a>
+</li>
+<li class="tooltip tooltip-right" data-tip="{% translate 'Website' %}">
+  <a href="https://zakir.id" class="btn btn-square btn-ghost">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75 16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
+    </svg>
+    <span class="sr-only">{% translate 'Website' %}</span>
+  </a>
+</li>
+{% endblock %}
