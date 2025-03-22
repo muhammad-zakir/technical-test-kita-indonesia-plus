@@ -16,7 +16,7 @@ class BookViewSet(viewsets.ModelViewSet):
     @action(
         detail=False, permission_classes=[permissions.AllowAny], \
         description='API endpoint that allows books to be publicly viewed.'
-    ) 
+    )
     def public(self, request):
         queryset = Books.objects.all()
         serializer = BookSerializer(queryset, many=True)
