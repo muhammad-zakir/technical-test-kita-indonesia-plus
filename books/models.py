@@ -15,7 +15,7 @@ class Books (models.Model):
 
 
 class BorrowedBooks (models.Model):
-    returned_at = models.DateTimeField()
+    returned_at = models.DateTimeField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(null=True)
