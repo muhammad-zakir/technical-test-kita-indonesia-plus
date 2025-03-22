@@ -1,0 +1,447 @@
+{
+	"info": {
+		"_postman_id": "44a60774-8e6d-44a9-ba37-d288049ab313",
+		"name": "Technical Test - We+",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5702751"
+	},
+	"item": [
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books/public",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"public"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books/2/public",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"2",
+								"public"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"if (pm.response.code === 200) {\r",
+									"    pm.environment.set('token', response.token);\r",
+									"};"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "administrator",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "adminjambu",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"if (pm.response.code === 200) {\r",
+									"    pm.environment.set('token', response.token);\r",
+									"};"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "testerkesembilan",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "testerjamblang",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "tester@itrium.id",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/register/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Member",
+			"item": [
+				{
+					"name": "Borrow Book",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "book_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/books/borrow/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"borrow",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Return Book",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "borrow_id",
+									"value": "8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/books/return/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"return",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Librarian",
+			"item": [
+				{
+					"name": "Books",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Book",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Blood Moon",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/books/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Blood Moon",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/books/6/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"6",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Book",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Blood Moon",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/books/6/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"6",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrowed Books",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/borrowed-books",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"borrowed-books"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
