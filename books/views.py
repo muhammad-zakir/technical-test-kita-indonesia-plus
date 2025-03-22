@@ -13,16 +13,20 @@ class BookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
     permission_classes = [permissions.IsAdminUser]
 
-    @action(detail=False, permission_classes=[permissions.AllowAny], \
-    description='API endpoint that allows books to be publicly viewed.') 
+    @action(
+        detail=False, permission_classes=[permissions.AllowAny], \
+        description='API endpoint that allows books to be publicly viewed.'
+    ) 
     def public(self, request):
         queryset = Books.objects.all()
         serializer = BookSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    @action(detail=True, permission_classes=[permissions.AllowAny], \
-    description='API endpoint that allows a book to be publicly viewed.', \
-    url_path='public')
+    @action(
+        detail=True, permission_classes=[permissions.AllowAny], \
+        description='API endpoint that allows a book to be publicly viewed.', \
+        url_path='public'
+    )
     def public_detail(self, request, pk=None):
         queryset = Books.objects.all()
         book = get_object_or_404(queryset, pk=pk)
