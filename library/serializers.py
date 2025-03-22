@@ -6,6 +6,11 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         ordering = ['-date_joined']
-        password = serializers.CharField(write_only=True)
         fields = ['username', 'email', 'is_staff', 'is_active', 'date_joined', 'last_login']
         read_only_fields = ['date_joined', 'last_login']
+
+
+class UserRegisterSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password']

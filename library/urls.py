@@ -7,6 +7,8 @@ from library import views as library_views
 router = routers.DefaultRouter()
 router.register(r'books', books_views.BookViewSet)
 router.register(r'users', library_views.UserViewSet)
+router.register(r'register', library_views.UserRegisterViewSet, basename='register')
+
 # router.register(r'users', views.UserViewSet)
 # router.register(r'groups', views.GroupViewSet)
 
