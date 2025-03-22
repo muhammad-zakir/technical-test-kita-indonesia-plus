@@ -10,6 +10,14 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         read_only_fields = ['date_joined', 'last_login']
 
 
+class UserIdentifierSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        ordering = ['-date_joined']
+        fields = ['id']
+        read_only_fields = ['id']
+
+
 class UserRegisterSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
