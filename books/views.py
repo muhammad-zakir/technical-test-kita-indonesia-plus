@@ -40,14 +40,6 @@ class BookViewSet(ModelViewSet):
         serializer = BookSerializer(book)
         return Response(serializer.data)
 
-class BorrowedBookViewSet(ModelViewSet):
-    """
-    API endpoint that allows borrowed books to be viewed or edited.
-    """
-    queryset = BorrowedBooks.objects.all().order_by('-created_at')
-    serializer_class = BorrowedBookSerializer
-    permission_classes = [permissions.IsAdminUser]
-
     @action(
         description='API endpoint that allows a book to be borrowed.',
         detail=False,
@@ -131,3 +123,11 @@ class BorrowedBookViewSet(ModelViewSet):
         serializer = BorrowedBookSerializer(borrowed_book)
 
         return Response(serializer.data)
+
+class BorrowedBookViewSet(ModelViewSet):
+    """
+    API endpoint that allows borrowed books to be viewed or edited.
+    """
+    queryset = BorrowedBooks.objects.all().order_by('-created_at')
+    serializer_class = BorrowedBookSerializer
+    permission_classes = [permissions.IsAdminUser]
