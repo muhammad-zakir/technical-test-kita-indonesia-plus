@@ -105,15 +105,7 @@ DATABASES = {
 }
 
 # Message Broker
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_rabbitmq.core.RabbitmqChannelLayer',
-        'CONFIG': {
-            'host': environment_variable('MESSAGE_BROKER_URL'),
-        }
-    }
-}
-
+MESSAGE_BROKER_URL = environment_variable('MESSAGE_BROKER_URL');
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -132,14 +124,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
