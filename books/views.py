@@ -14,8 +14,9 @@ class BookViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAdminUser]
 
     @action(
-        detail=False, permission_classes=[permissions.AllowAny], \
-        description='API endpoint that allows books to be publicly viewed.'
+        description='API endpoint that allows books to be publicly viewed.',
+        detail=False,
+        permission_classes=[permissions.AllowAny]
     )
     def public(self, request):
         queryset = Books.objects.all()
@@ -23,8 +24,9 @@ class BookViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     @action(
-        detail=True, permission_classes=[permissions.AllowAny], \
-        description='API endpoint that allows a book to be publicly viewed.', \
+        description='API endpoint that allows a book to be publicly viewed.',
+        detail=True,
+        permission_classes=[permissions.AllowAny],
         url_path='public'
     )
     def public_detail(self, request, pk=None):
